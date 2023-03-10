@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <div>{{message}}</div>
+
+      <!-- 在数据页面未挂载完成时不显示 -->
+      <div v-cloak>{{message}}</div>
+
+      <!-- <div v-text="message"></div> -->
+
+      <!-- <div v-once>{{message}}</div> -->
+
+      <!-- 解析html模板 -->
+      <div v-html="msg"></div>
+
+      <!-- 不对mastach句法进行解析 -->
+      <!-- <div v-pre>{{message}}</div> -->
+
+      <button @click="changeMessage">click to change message</button>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          message: "hello world",
+          msg: `<span style="background-color: #ddd; color: rebeccapurple;">v-html-mesage</span>`,
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage() {
+          this.message = "The change is changeed";
+          console.log(this);
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>
