@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <div>{{message}}</div>
+      <ul>
+        <li v-for=" (movie,index) in movies">{{index+1}},{{movie}}</li>
+      </ul>
+      <h2>个人信息</h2>
+      <ul>
+        <template v-for="(value,key,) in info">
+          <li>{{key}}</li>
+          <li>{{value}}</li>
+          <li class="divider"></li>
+        </template>
+      </ul>
+      <button @click="changeMessage">click to change message</button>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          message: "hello world",
+          movies: ["007", "星际穿越", "大户西游", "计算属性"],
+          info: {
+            name: "longyou",
+            age: 18,
+            height: 1.88,
+          },
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage() {
+          this.message = "The change is changeed";
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .active {
+      background-color: antiquewhite;
+    }
+  </style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <div :class="{active:isActive}">{{message}}</div>
+      <!-- 将属性单独设置为对象 -->
+      <!-- <div :class="classObj">{{message}}</div> -->
+
+      <button @click="changeActive">click to changeActive</button>
+
+      <!-- 将返回的对象放在一个methods中（computed）方法中 -->
+      <div :class="getClassObj()">{{message}}</div>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          message: "hello world",
+          isActive: true,
+          classObj: {
+            active: true,
+            title: true,
+          },
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage() {
+          this.message = "The change is changeed";
+        },
+        changeActive() {
+          this.isActive = !this.isActive;
+          console.log("@@");
+        },
+        getClassObj() {
+          return {
+            active: true,
+            title: true,
+          };
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

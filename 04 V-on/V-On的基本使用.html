@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .box {
+      height: 200px;
+      width: 200px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <body>
+    <div id="app">HHHH</div>
+
+    <template id="why">
+      <div>{{message}}</div>
+      <!-- 完整写法 v-on:监听的事件="methods中的方法" -->
+      <button v-on:click="changeMessage">click to change message</button>
+      <div class="box" v-on:mousemove="mouseMove">click to move the mouse</div>
+      <!-- 内联表达式 -->
+      <button @click="counter++">{{counter}}</button>
+      <!-- 绑定多个事件 -->
+      <div class="box" @="{click:changeMessage,mousemove:mouseMove}">123</div>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          message: "hello world",
+          counter: 100,
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage() {
+          this.message = "The change is changeed";
+        },
+        mouseMove() {
+          console.log("鼠标移动了");
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

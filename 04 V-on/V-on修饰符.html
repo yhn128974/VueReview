@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <div @click="changeMessage2">
+        <button @click.stop="changeMessage1">click to change message</button>
+      </div>
+      <!-- 键盘抬起事件 -->
+      <input type="text" @keyup.enter="enterKeyUp" />
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          message: "hello world",
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage1() {
+          console.log(this, "This is already clicked 1");
+        },
+        changeMessage2() {
+          console.log(this, "This is already clicked 2");
+        },
+        enterKeyUp(event) {
+          console.log(event.target.value);
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

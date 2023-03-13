@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <template v-if="isShow">
+        <h2>hahaha</h2>
+        <h2>hahaha</h2>
+        <h2>hahaha</h2>
+      </template>
+      <template v-else>
+        <h2>mimimi</h2>
+        <h2>mimimi</h2>
+        <h2>mimimi</h2>
+      </template>
+
+      <div>{{message}}</div>
+      <button @click="changeMessage">click to change message</button>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+            isShow: true,
+          message: "hello world",
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage() {
+          this.message = "The change is changeed";
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>
