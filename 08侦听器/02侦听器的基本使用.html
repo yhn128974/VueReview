@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <h2>{{info.name}}</h2>
+      <!-- <h2>{{info.nba.username}}</h2> -->
+      <button @click="changeinfo">click info</button>
+      <button @click="changeinfoname">click to change infoname</button>
+      <button @click="changeinfonbaName">
+        click to change this nba's name
+      </button>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          info: {
+            name: "long",
+            age: 20,
+            sex: "男",
+            nba: {
+              username: "alice",
+            },
+          },
+        };
+      },
+      watch: {
+        // watch 函数方法默认只能监听watch本身的改变不能监听到内部的改变
+        // info(newValue, oldValue) {
+        //   console.log(newValue, oldValue);
+        // },
+
+        // 对象方式监听
+        info: {
+          handler: function (newinfo, oldinfo) {
+            console.log("newsinfo:", newinfo, "oldinfo:", oldinfo);
+          },
+          deep: true, //深度侦听
+          immediate: true, //立即执行
+        },
+        // 监听的单个属性
+        "info.name": {
+          handler: function (newinfo, oldinfo) {
+            console.log("newsinfo:", newinfo, "oldinfo:", oldinfo);
+          },
+          deep: true, //深度侦听
+          immediate: true, //立即执行
+        },
+      },
+
+      methods: {
+        changeinfo() {
+          this.info = {
+            name: "longyou",
+            age: "30",
+            sex: "girl",
+          };
+        },
+        changeinfoname() {
+          this.info.name = "longyou";
+        },
+        changeinfonbaName() {
+          this.info.nba.username = "Ben";
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

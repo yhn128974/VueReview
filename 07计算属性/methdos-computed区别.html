@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <h2>{{getfullname}}</h2>
+      <button @click="changeFirstName">click to change message</button>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          firstname: "long",
+          lastname: "you",
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        // fullName() {
+        //   return this.firsname + "" + this.lastname;
+        // },
+        changeFirstName() {
+          this.fullName = "Long you";
+        },
+      },
+      computed: {
+        // 计算属性是有缓存的，当我们多次调用的时候计算属性只会执行一次
+        getfullname() {
+          return this.firstname + "" + this.lastname;
+        },
+        // fullname的getter和setter方法
+
+        fullName: {
+          get: function () {
+            return this.firsname + this.lastname;
+          },
+          set: function (newValue) {
+            console.log(newValue);
+            const names = newValue.split("");
+            this.firstname = names[0];
+            this.lastname = names[1];
+            console.log(names[0], names[1]);
+          },
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

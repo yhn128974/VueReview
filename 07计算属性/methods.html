@@ -10,16 +10,6 @@
   <body>
     <div id="app">HHHH</div>
     <template id="why">
-      <template v-if="isShow">
-        <h2>hahaha</h2>
-        <h2>hahaha</h2>
-        <h2>hahaha</h2>
-      </template>
-      <template v-else>
-        <h2>mimimi</h2>
-        <h2>mimimi</h2>
-        <h2>mimimi</h2>
-      </template>
       <div>{{message}}</div>
       <button @click="changeMessage">click to change message</button>
     </template>
@@ -31,8 +21,11 @@
       template: "#why",
       data() {
         return {
-          isShow: true,
           message: "hello world",
+          firtsName: "",
+          lastname: "",
+          score: 80,
+          message: "hello wrold",
         };
       },
       // #是表示queryselect选择模式
@@ -40,6 +33,9 @@
         changeMessage() {
           this.message = "The change is changeed";
         },
+      },
+      computed: {
+        funllname() {},
       },
     }).mount("#app");
   </script>

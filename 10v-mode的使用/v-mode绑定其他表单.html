@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <label for="basketball">
+        <input
+          id="basketball"
+          type="checkbox"
+          v-model="message"
+          value="basketball"
+        />basketball
+      </label>
+
+      <label for="football">
+        <input
+          id="football"
+          type="checkbox"
+          v-model="message"
+          value="football"
+        />football
+      </label>
+
+      <label for="tennis">
+        <input id="tennis" type="checkbox" v-model="message" value="tennis" />
+        tennis
+      </label>
+
+      <div>{{message}}</div>
+
+      <label for=""
+        ><input
+          type="radio"
+          name=""
+          id="male"
+          value="male"
+          v-model="gender"
+        />男</label
+      >
+      <label for=""
+        ><input
+          type="radio"
+          name=""
+          id="male"
+          value="female"
+          v-model="gender"
+        />女</label
+      >
+
+      <p>{{gender}}</p>
+
+      <button @click="changeMessage">click to change message</button>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    Vue.createApp({
+      template: "#why",
+      data() {
+        return {
+          message: [],
+          gender: "",
+        };
+      },
+      // #是表示queryselect选择模式
+      methods: {
+        changeMessage() {
+          this.message = "The change is changeed";
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

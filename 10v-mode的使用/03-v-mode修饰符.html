@@ -10,16 +10,13 @@
   <body>
     <div id="app">HHHH</div>
     <template id="why">
-      <template v-if="isShow">
-        <h2>hahaha</h2>
-        <h2>hahaha</h2>
-        <h2>hahaha</h2>
-      </template>
-      <template v-else>
-        <h2>mimimi</h2>
-        <h2>mimimi</h2>
-        <h2>mimimi</h2>
-      </template>
+      <!--v-model.lazy将  -->
+      <!-- <input type="text" v-model.lazy="message"> -->
+      <!-- 将输入框内部的值转化为数字类型 -->
+      <!-- <input type="text" v-model.number="message" /> -->
+      <!-- v-model.trim 去除多余空格 -->
+      <input type="text" v-model.trim="message" />
+
       <div>{{message}}</div>
       <button @click="changeMessage">click to change message</button>
     </template>
@@ -31,7 +28,6 @@
       template: "#why",
       data() {
         return {
-          isShow: true,
           message: "hello world",
         };
       },

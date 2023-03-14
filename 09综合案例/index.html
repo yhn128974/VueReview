@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="./index.css" />
+  <body>
+    <div id="app">HHHH</div>
+    <template id="why">
+      <template v-if="books.length > 0">
+        <table>
+          <thead>
+            <th>序号</th>
+            <th>书籍名词</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </thead>
+          <tbody class="tablestyle">
+            <tr v-for="(book,index) in books">
+              <td>{{index+1}}</td>
+              <td>{{book.name}}</td>
+              <td>{{book.date}}</td>
+              <td>{{book.price}}</td>
+              <td>
+                <button @click="decrement(book.id)" :disabled="book.count==0">
+                  -
+                </button>
+                {{book.count}}
+                <button @click="increment(book.id)">+</button>
+              </td>
+              <td><button @click="remove(book.id)">移除</button></td>
+            </tr>
+          </tbody>
+          <div>
+            <h1>总价￥{{getaAllPrice}}</h1>
+          </div>
+        </table>
+      </template>
+      <template id="why" v-else>
+        <h2>购物车为空</h2>
+      </template>
+    </template>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="./index.js"></script>
+</html>
