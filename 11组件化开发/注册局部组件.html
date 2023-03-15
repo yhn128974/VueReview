@@ -15,11 +15,11 @@
       <hr />
       <!-- 调用component -->
       <component-a></component-a>
-      
+
       <component-b></component-b>
     </template>
 
-    <template id="component-a">
+    <template id="component_a">
       <h2>title</h2>
       <p>this is content</p>
     </template>
@@ -32,8 +32,20 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <script>
+    const component_a = {
+      template: "#component_a",
+    };
+    const component_b = {
+      template: "#component_b",
+    };
+
     const App = {
       template: "#my-app",
+      //   局部组件注册
+      components: {
+        component_a,
+        component_b,
+      },
       data() {
         return {
           message: "hello world",
@@ -48,17 +60,7 @@
     };
     const app = Vue.createApp(App);
     // 使用app注册一个全局组件
-    app.component("component-a", {
-      template: "#component-a",
-    });
-    app.component("component-b", {
-      template: "#component-b",
-      data() {
-        return {
-          message: "Hello World",
-        };
-      },
-    });
+
     app.mount("#app");
   </script>
 </html>
