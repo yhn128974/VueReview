@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <p>Home</p>
     <HomeContent/>
   </div>
@@ -12,6 +11,9 @@ export default {
   components: {
     HomeContent,
   },
+  providers: {
+    address:"重庆"
+  }
 };
 </script>
 

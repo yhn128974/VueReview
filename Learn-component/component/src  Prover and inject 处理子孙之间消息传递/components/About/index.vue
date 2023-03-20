@@ -1,11 +1,13 @@
 <template>
   <div>
-    <p>home content</p>
+    this is about 
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  
+}
 </script>
 
 <style>
