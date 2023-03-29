@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import App from "./components/07composition练习/App.vue";
+import App from "./components/10JSX/App.vue";
 
 const app = createApp(App);
 // 全局混入
